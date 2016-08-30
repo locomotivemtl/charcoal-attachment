@@ -3,8 +3,43 @@
         "type": "charcoal/attachment/object/link",
         "preview": "{{> charcoal/attachment/object/link }}",
         "heading": {
-            "fr": "Lien externe{{# title }}: {{ . }} — {{/ title }}{{^ title }} #{{ id }} — {{/ title }}{{ link }}",
-            "en": "External Link{{# title }}: {{ . }} — {{/ title }}{{^ title }} #{{ id }} — {{/ title }}{{ link }}"
+            "fr": "{{ title }}{{^ title }}Lien externe : #{{ id }}{{/ title }}{{# link }} — {{> charcoal/attachment/heading/link }}{{/ link }}",
+            "en": "{{ title }}{{^ title }}External Link: #{{ id }}{{/ title }}{{# link }} — {{> charcoal/attachment/heading/link }}{{/ link }}"
+        }
+    },
+
+    "labels": {
+        "name": {
+            "en": "Hyperlinks",
+            "fr": "Hyperliens"
+        },
+        "singular_name": {
+            "en": "Hyperlink",
+            "fr": "Hyperlien"
+        },
+        "add_new": {
+            "en": "Hyperlink",
+            "fr": "Hyperlien"
+        },
+        "add_new_item": {
+            "en": "Add Hyperlink",
+            "fr": "Ajouter un hyperlien"
+        },
+        "new_item": {
+            "en": "New Hyperlink",
+            "fr": "Nouvel hyperlien"
+        },
+        "edit_item": {
+            "en": "Edit Hyperlink",
+            "fr": "Modifier l’hyperlien"
+        },
+        "attachment_heading": {
+            "en": "Hyperlink",
+            "fr": "Hyperlien"
+        },
+        "all_items": {
+            "en": "All Hyperlinks",
+            "fr": "Toutes les hyperliens"
         }
     },
 

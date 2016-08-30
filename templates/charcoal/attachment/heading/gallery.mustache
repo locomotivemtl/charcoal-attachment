@@ -1,0 +1,23 @@
+{{!--
+    Attachable Preview \ Gallery
+    ============================
+--}}
+{{# hasAttachments }}
+<ul class="gallery-list row">
+{{# attachments }}
+    <li class="col-xs-3 col-md-3">
+    {{# thumbnail }}
+        <img class="thumbnail" src="{{ baseUrl }}{{ . }}" />
+    {{/ thumbnail }}
+    {{^ thumbnail }}
+    {{# file }}
+        <img class="thumbnail" src="{{ baseUrl }}{{ . }}" />
+    {{/ file }}
+    {{/ thumbnail }}
+    </li>
+{{/ attachments }}
+</ul>
+{{/ hasAttachments }}
+{{^ hasAttachments }}
+{{> charcoal/admin/widget/attachment/empty }}
+{{/ hasAttachments }}
