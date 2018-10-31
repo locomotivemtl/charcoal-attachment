@@ -10,6 +10,9 @@ use Mockery;
 // From PSR-3
 use Psr\Log\NullLogger;
 
+// From Slim
+use Slim\Http\Uri;
+
 // From 'tedivm/stash'
 use Stash\Pool;
 use Stash\Driver\Ephemeral;
@@ -106,7 +109,15 @@ class ContainerProvider
     public function registerBaseUrl(Container $container)
     {
         $container['base-url'] = function () {
-            return '';
+            $baseUrl = Uri::createFromString('')->withUserInfo('');
+
+            /** Fix the base path */
+            $path = $baseUrl->getPath();
+            if ($path) {
+                $baseUrl = $baseUrl->withBasePath($path)->withPath('');
+            }
+
+            return $baseUrl;
         };
     }
 
