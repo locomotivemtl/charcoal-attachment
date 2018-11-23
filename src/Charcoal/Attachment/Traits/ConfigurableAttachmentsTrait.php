@@ -35,7 +35,7 @@ trait ConfigurableAttachmentsTrait
      *
      * @param  ConfigInterface|array $config The datas to set.
      * @throws InvalidArgumentException If the parameter is invalid.
-     * @return ConfigurableInterface Chainable
+     * @return self
      */
     public function setConfig($config)
     {

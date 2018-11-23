@@ -79,14 +79,14 @@ class Join extends AbstractModel implements
     /**
      * The source object of the relationship.
      *
-     * @var ModelInterface|null
+     * @var \Charcoal\Model\ModelInterface|null
      */
     protected $sourceObject;
 
     /**
      * The related object of the relationship.
      *
-     * @var ModelInterface|null
+     * @var \Charcoal\Model\ModelInterface|null
      */
     protected $relatedObject;
 
@@ -147,7 +147,7 @@ class Join extends AbstractModel implements
      * Retrieve the source object of the relationship.
      *
      * @throws LogicException If the relationship is broken or incomplete.
-     * @return ModelInterface|null
+     * @return \Charcoal\Model\ModelInterface|null
      */
     public function getObject()
     {
@@ -174,7 +174,7 @@ class Join extends AbstractModel implements
      * Retrieve the related object of the relationship.
      *
      * @throws LogicException If the relationship is broken or incomplete.
-     * @return ModelInterface|null
+     * @return \Charcoal\Model\ModelInterface|null
      */
     public function getAttachment()
     {
@@ -188,7 +188,8 @@ class Join extends AbstractModel implements
 
                     $type = $model->type();
                     if ($type !== $model->objType()) {
-                        $this->relatedObject = $this->modelFactory()->create($type)->setData($model->data());
+                        $this->relatedObject = $this->modelFactory()->create($type);
+                        $this->relatedObject->setData($model->data());
                     }
                 }
             } catch (Exception $e) {

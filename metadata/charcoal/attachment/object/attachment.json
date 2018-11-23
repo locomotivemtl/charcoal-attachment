@@ -16,6 +16,10 @@
             "mode": "uniqid",
             "label": "ID"
         },
+        "type": {
+            "type": "string",
+            "label": "Type"
+        },
         "title": {
             "type": "string",
             "l10n": true,
@@ -46,10 +50,6 @@
             "multiple": true,
             "l10n": true,
             "label": "Keywords"
-        },
-        "type": {
-            "type": "string",
-            "label": "Type"
         },
         "link": {
             "type": "string",

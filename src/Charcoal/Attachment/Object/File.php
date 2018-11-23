@@ -3,7 +3,7 @@
 namespace Charcoal\Attachment\Object;
 
 /**
- * File Attachment Type
+ * File Attachment Type.
  *
  * For example: PDF, DOC, DOCX, etc. The file node is displayed differently
  * than the Image node, but is still basicly the same.

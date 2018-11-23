@@ -24,8 +24,8 @@ interface AttachmentAwareInterface
     /**
      * Attach a node to the current object.
      *
-     * @param  AttachableInterface|ModelInterface $attachment An attachment or object.
-     * @param  string                             $group      Attachment group, defaults to contents.
+     * @param  AttachableInterface|\Charcoal\Model\ModelInterface $attachment An attachment or object.
+     * @param  string                                             $group      Attachment group, defaults to contents.
      * @return boolean|self
      */
     public function addAttachment($attachment, $group = 'contents');

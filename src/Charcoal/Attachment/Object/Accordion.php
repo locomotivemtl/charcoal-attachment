@@ -6,7 +6,7 @@ namespace Charcoal\Attachment\Object;
 use Charcoal\Attachment\Object\Container;
 
 /**
- * Accordion Attachment Type
+ * Accordion Attachment Type (container).
  *
  * This type allows for nesting of additional attachment types.
  */

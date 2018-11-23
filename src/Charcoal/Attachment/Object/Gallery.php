@@ -6,7 +6,7 @@ namespace Charcoal\Attachment\Object;
 use Charcoal\Attachment\Object\Container;
 
 /**
- * Gallery Attachment Type
+ * Gallery Attachment Type (container).
  *
  * This type allows for nesting of additional attachment types.
  */

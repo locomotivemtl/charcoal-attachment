@@ -205,20 +205,6 @@ class Attachment extends Content implements AttachableInterface
     }
 
     /**
-     * Inject dependencies from a DI Container.
-     *
-     * @param  Container $container A dependencies container instance.
-     * @return void
-     */
-    protected function setDependencies(Container $container)
-    {
-        parent::setDependencies($container);
-
-        $this->setBaseUrl($container['base-url']);
-        $this->setCollectionLoader($container['model/collection/loader']);
-    }
-
-    /**
      * Determine if the model is for presentation or editing.
      *
      * @param  boolean $presenter The presenter flag.
@@ -295,7 +281,7 @@ class Attachment extends Content implements AttachableInterface
 
         if (!$obj->id()) {
             throw new InvalidArgumentException(sprintf(
-                'Container object must have an ID.',
+                'Container object (%s) must have an ID.',
                 (is_object($obj) ? get_class($obj) : gettype($obj))
             ));
         }
@@ -534,14 +520,11 @@ class Attachment extends Content implements AttachableInterface
         return ($this instanceof AttachmentContainerInterface);
     }
 
-    // Setters
-    // =============================================================================
-
     /**
      * Show/hide the attachment's title on the front-end.
      *
      * @param  boolean $show Show (TRUE) or hide (FALSE) the title.
-     * @return UiItemInterface Chainable
+     * @return self
      */
     public function setShowTitle($show)
     {
@@ -745,11 +728,7 @@ class Attachment extends Content implements AttachableInterface
      */
     public function showTitle()
     {
-        if (is_bool($this->showTitle)) {
-            return $this->showTitle;
-        } else {
-            return !!$this->title();
-        }
+        return $this->showTitle;
     }
 
     /**
@@ -911,49 +890,6 @@ class Attachment extends Content implements AttachableInterface
         return $this;
     }
 
-    // Events
-    // =============================================================================
-
-    /**
-     * Event called before _deleting_ the attachment.
-     *
-     * @see    Charcoal\Source\StorableTrait::preDelete() For the "create" Event.
-     * @see    Charcoal\Attachment\Traits\AttachmentAwareTrait::removeJoins
-     * @return boolean
-     */
-    public function preDelete()
-    {
-        $attId = $this->id();
-        $joinProto = $this->modelFactory()->get(Join::class);
-        $loader = $this->collectionLoader();
-        $loader->setModel($joinProto);
-
-        $collection = $loader->addFilter('attachment_id', $attId)->load();
-
-        foreach ($collection as $obj) {
-            $obj->delete();
-        }
-
-        return parent::preDelete();
-    }
-
-    // Utilities
-    // =============================================================================
-
-    /**
-     * Set the base URI of the project.
-     *
-     * @see    \Charcoal\Admin\Support\setBaseUrl::baseUrl()
-     * @param  UriInterface $uri The base URI.
-     * @return self
-     */
-    protected function setBaseUrl(UriInterface $uri)
-    {
-        $this->baseUrl = $uri;
-
-        return $this;
-    }
-
     /**
      * Retrieve the base URI of the project.
      *
@@ -970,6 +906,66 @@ class Attachment extends Content implements AttachableInterface
         }
 
         return $this->baseUrl;
+    }
+
+    /**
+     * Retrieve the model collection loader.
+     *
+     * @throws Exception If the collection loader was not previously set.
+     * @return CollectionLoader
+     */
+    public function collectionLoader()
+    {
+        if (!isset($this->collectionLoader)) {
+            throw new Exception(sprintf(
+                'Collection Loader is not defined for "%s"',
+                get_class($this)
+            ));
+        }
+
+        return $this->collectionLoader;
+    }
+
+    /**
+     * Inject dependencies from a DI Container.
+     *
+     * @param  Container $container A dependencies container instance.
+     * @return void
+     */
+    protected function setDependencies(Container $container)
+    {
+        parent::setDependencies($container);
+
+        $this->setBaseUrl($container['base-url']);
+        $this->setCollectionLoader($container['model/collection/loader']);
+    }
+
+
+    /**
+     * Set the base URI of the project.
+     *
+     * @see    \Charcoal\Admin\Support\setBaseUrl::baseUrl()
+     * @param  UriInterface $uri The base URI.
+     * @return self
+     */
+    protected function setBaseUrl(UriInterface $uri)
+    {
+        $this->baseUrl = $uri;
+
+        return $this;
+    }
+
+    /**
+     * Set a model collection loader.
+     *
+     * @param  CollectionLoader $loader The collection loader.
+     * @return self
+     */
+    protected function setCollectionLoader(CollectionLoader $loader)
+    {
+        $this->collectionLoader = $loader;
+
+        return $this;
     }
 
     /**
@@ -1048,33 +1044,25 @@ class Attachment extends Content implements AttachableInterface
     }
 
     /**
-     * Set a model collection loader.
+     * Event called before _deleting_ the attachment.
      *
-     * @param  CollectionLoader $loader The collection loader.
-     * @return self
+     * @see    Charcoal\Source\StorableTrait::preDelete() For the "create" Event.
+     * @see    Charcoal\Attachment\Traits\AttachmentAwareTrait::removeJoins
+     * @return boolean
      */
-    protected function setCollectionLoader(CollectionLoader $loader)
+    protected function preDelete()
     {
-        $this->collectionLoader = $loader;
+        $attId = $this->id();
+        $joinProto = $this->modelFactory()->get(Join::class);
+        $loader = $this->collectionLoader();
+        $loader->setModel($joinProto);
 
-        return $this;
-    }
+        $collection = $loader->addFilter('attachment_id', $attId)->load();
 
-    /**
-     * Retrieve the model collection loader.
-     *
-     * @throws Exception If the collection loader was not previously set.
-     * @return CollectionLoader
-     */
-    public function collectionLoader()
-    {
-        if (!isset($this->collectionLoader)) {
-            throw new Exception(sprintf(
-                'Collection Loader is not defined for "%s"',
-                get_class($this)
-            ));
+        foreach ($collection as $obj) {
+            $obj->delete();
         }
 
-        return $this->collectionLoader;
+        return parent::preDelete();
     }
 }

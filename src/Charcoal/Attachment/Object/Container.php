@@ -16,7 +16,7 @@ use Charcoal\Attachment\Traits\AttachmentContainerTrait;
 use Charcoal\Attachment\Traits\ConfigurableAttachmentsTrait;
 
 /**
- * Gallery Attachment Type
+ * Gallery Attachment Type.
  *
  * This type allows for nesting of additional attachment types.
  */
@@ -51,7 +51,7 @@ class Container extends Attachment implements
      *
      * @param  mixed ...$args Filter the attachments;
      *     options accepted by {@see AttachmentAwareTrait::attachments()}.
-     * @return Collection|Attachment[]
+     * @return array|Attachment[]
      */
     public function attachments(...$args)
     {

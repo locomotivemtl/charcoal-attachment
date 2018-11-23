@@ -379,7 +379,7 @@ class AttachmentWidget extends AdminWidget implements
      *
      * @param  string $lang The language code.
      * @throws InvalidArgumentException If the argument is not a string.
-     * @return UserDataInterface Chainable
+     * @return self
      */
     public function setLang($lang)
     {
@@ -523,7 +523,7 @@ class AttachmentWidget extends AdminWidget implements
      * Specificy the object as a KEY (ident) to whom you
      * can add filters, label and orders.
      *
-     * @param  array|AttachableInterface[] $attachableObjects A list of available attachment types.
+     * @param  array|\Charcoal\Attachment\Interfaces\AttachableInterface[] $attachableObjects A list of available attachment types.
      * @return self|boolean
      */
     public function setAttachableObjects($attachableObjects)

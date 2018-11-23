@@ -25,7 +25,7 @@ class Generic extends Content implements CategoryInterface
 
     /**
      * @param  string $name The attachment category name.
-     * @return NewsCategory Chainable
+     * @return self
      */
     public function setName($name)
     {

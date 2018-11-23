@@ -10,14 +10,14 @@ interface JoinInterface
     /**
      * Retrieve the source object of the relationship.
      *
-     * @return ModelInterface|null
+     * @return \Charcoal\Model\ModelInterface|null
      */
     public function getObject();
 
     /**
      * Retrieve the related object of the relationship.
      *
-     * @return ModelInterface|null
+     * @return \Charcoal\Model\ModelInterface|null
      */
     public function getAttachment();
 

@@ -37,7 +37,7 @@ class AttachmentsConfig extends AbstractConfig
      * Set attachments settings in a specific order.
      *
      * @param  array $data New config values.
-     * @return AttachmentsConfig Chainable
+     * @return self
      */
     public function setData(array $data)
     {
@@ -63,7 +63,7 @@ class AttachmentsConfig extends AbstractConfig
      *
      * @param  array $attachables One or more attachment types.
      * @throws InvalidArgumentException If the attachment type or structure is invalid.
-     * @return AttachmentsConfig Chainable
+     * @return self
      */
     public function setAttachables(array $attachables)
     {
@@ -108,7 +108,7 @@ class AttachmentsConfig extends AbstractConfig
      *
      * @param  array $groups One or more groupings.
      * @throws InvalidArgumentException If the group identifier or structure is invalid.
-     * @return AttachmentsConfig Chainable
+     * @return self
      */
     public function setGroups(array $groups)
     {
@@ -158,7 +158,7 @@ class AttachmentsConfig extends AbstractConfig
      *
      * @param  array $widgets One or more widget structures.
      * @throws InvalidArgumentException If the widget identifier or structure is invalid.
-     * @return AttachmentsConfig Chainable
+     * @return self
      */
     public function setWidgets(array $widgets)
     {
