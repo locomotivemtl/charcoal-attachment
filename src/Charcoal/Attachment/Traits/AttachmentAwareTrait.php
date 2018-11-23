@@ -45,7 +45,7 @@ trait AttachmentAwareTrait
     /**
      * Store a collection of node objects.
      *
-     * @var Collection|Attachment[]
+     * @var array|Attachment[]
      */
     protected $attachments = [];
 
@@ -65,7 +65,7 @@ trait AttachmentAwareTrait
      * @param  callable|null     $before Process each attachment before applying data.
      * @param  callable|null     $after  Process each attachment after applying data.
      * @throws InvalidArgumentException If the $group or $type is invalid.
-     * @return Collection|Attachment[]
+     * @return array|Attachment[]
      */
     public function getAttachments(
         $group = null,
@@ -147,6 +147,7 @@ trait AttachmentAwareTrait
                 joined.attachment_id = attachment.id
             WHERE
                 1 = 1', $attTable, $joinTable);
+        $binds = [];
 
         /** Disable `active` check in admin, or according to $isActive value */
         if (!$widget instanceof AttachmentWidget && $isActive === true) {
@@ -156,21 +157,25 @@ trait AttachmentAwareTrait
         }
 
         if ($type) {
-            $query .= sprintf('
+            $query .= '
             AND
-                attachment.type = "%s"', $type);
+                attachment.type = :type';
+            $binds[':type'] = $type;
         }
 
-        $query .= sprintf('
+        $query .= '
             AND
-                joined.object_type = "%s"
+                joined.object_type = :objectType
             AND
-                joined.object_id = "%s"', $objType, $objId);
+                joined.object_id = :objectId';
+        $binds[':objectType'] = $objType;
+        $binds[':objectId'] = $objId;
 
         if ($group) {
-            $query .= sprintf('
+            $query .= '
             AND
-                joined.group = "%s"', $group);
+                joined.group = :group';
+            $binds[':group'] = $group;
         }
 
         $query .= '
@@ -242,7 +247,7 @@ trait AttachmentAwareTrait
             };
         }
 
-        $collection = $loader->loadFromQuery($query, $after, $callable->bindTo($this));
+        $collection = $loader->loadFromQuery([$query, $binds], $after, $callable->bindTo($this));
 
         $this->attachments[$group][$type] = $collection;
 
