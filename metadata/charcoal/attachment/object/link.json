@@ -1,5 +1,5 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/link",
         "preview": "{{> charcoal/attachment/object/link }}",
         "heading": "{{# _t }}External Link{{/ _t }}{{# title }}: {{ . }} — {{/ title }}{{^ title }} #{{ id }} — {{/ title }}{{ link }}"
@@ -8,7 +8,7 @@
     "admin": {
         "forms": {
             "link": {
-                "l10n_mode": "loop_inputs",
+                "l10nMode": "loopInputs",
                 "groups": {
                     "info": {
                         "title": "Information",
@@ -57,7 +57,8 @@
                 }
             }
         },
-        "default_form": "link",
+
+        "defaultForm": "link",
 
         "lists": {
             "link": {
@@ -66,7 +67,7 @@
                     "subtitle",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Link",
                         "ident": "create",
@@ -99,15 +100,16 @@
                 }
             }
         },
-        "default_list": "link",
+
+        "defaultList": "link",
 
         "dashboards": {
             "edit": {
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "link",
-                        "obj_type": "charcoal/attachment/object/link"
+                        "formIdent": "link",
+                        "objType": "charcoal/attachment/object/link"
                     }
                 },
                 "layout": {
@@ -121,8 +123,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "link",
-                        "obj_type": "charcoal/attachment/object/link"
+                        "collectionIdent": "link",
+                        "objType": "charcoal/attachment/object/link"
                     }
                 },
                 "layout": {

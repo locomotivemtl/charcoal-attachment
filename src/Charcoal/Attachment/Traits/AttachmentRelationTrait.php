@@ -69,40 +69,40 @@ trait AttachmentRelationTrait
         $pivot = $this->modelFactory()->create(Join::class);
 
         if (is_string($data) && strpos($data, '_') > 1) {
-            $data = array_combine([ 'obj_type', 'obj_id' ], explode('_', $data, 1));
+            $data = array_combine([ 'objType', 'objId' ], explode('_', $data, 1));
         }
 
         if (is_scalar($data)) {
             return $pivot->load($data);
         } elseif (is_array($data)) {
             $data = array_merge([
-                'obj_type'      => null,
-                'obj_id'        => null,
-                'attachment_id' => null,
+                'objType'      => null,
+                'objId'        => null,
+                'attachmentId' => null,
                 'group'         => AttachmentContainerInterface::DEFAULT_GROUPING,
             ], $data);
 
             if ($this instanceof AttachableInterface) {
-                if (!isset($data['attachment_id']) && $this->id()) {
-                    $data['attachment_id'] = $this->id();
+                if (!isset($data['attachmentId']) && $this->id()) {
+                    $data['attachmentId'] = $this->id();
                 }
             } elseif ($this instanceof AttachmentAwareInterface) {
-                if (!isset($data['obj_id']) && $this->id()) {
-                    $data['obj_id'] = $this->id();
+                if (!isset($data['objId']) && $this->id()) {
+                    $data['objId'] = $this->id();
                 }
 
-                if (!isset($data['obj_type'])) {
-                    $data['obj_type'] = $this->objType();
+                if (!isset($data['objType'])) {
+                    $data['objType'] = $this->objType();
                 }
             }
 
-            if (isset($data['obj_type']) && isset($data['obj_id'])) {
-                $pivot->setObjectType($data['obj_type']);
-                $pivot->setObjectId($data['obj_id']);
+            if (isset($data['objType']) && isset($data['objId'])) {
+                $pivot->setObjectType($data['objType']);
+                $pivot->setObjectId($data['objId']);
                 $pivot->setGroup($data['group']);
 
-                if (isset($data['attachment_id'])) {
-                    $pivot->setAttachmentId($data['attachment_id']);
+                if (isset($data['attachmentId'])) {
+                    $pivot->setAttachmentId($data['attachmentId']);
 
                     $query = '
                         SELECT
@@ -110,26 +110,26 @@ trait AttachmentRelationTrait
                         FROM
                            `%table`
                         WHERE 1 = 1
-                           AND `%obj_type` = :obj_type
-                           AND `%obj_id` = :obj_id
+                           AND `%objType` = :objType
+                           AND `%objId` = :objId
                            AND `%att_id` = :att_id
                            AND `%group`  = :group
                         LIMIT
                            1';
 
                     $query = strtr($query, [
-                        '%table'    => $pivot->source()->table(),
-                        '%obj_type' => 'object_type',
-                        '%obj_id'   => 'object_id',
-                        '%att_id'   => 'attachment_id',
-                        '%group'    => 'group',
+                        '%table'   => $pivot->source()->table(),
+                        '%objType' => 'objectType',
+                        '%objId'   => 'objectId',
+                        '%att_id'  => 'attachmentId',
+                        '%group'   => 'group',
                     ]);
 
                     $binds = [
-                        'obj_type' => $data['obj_type'],
-                        'obj_id'   => $data['obj_id'],
-                        'att_id'   => $data['attachment_id'],
-                        'group'    => $data['group'],
+                        'objType' => $data['objType'],
+                        'objId'   => $data['objId'],
+                        'att_id'  => $data['attachmentId'],
+                        'group'   => $data['group'],
                     ];
 
                     $pivot->loadFromQuery($query, $binds);

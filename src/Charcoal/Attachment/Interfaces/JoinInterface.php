@@ -44,8 +44,8 @@ interface JoinInterface
 
 
 
-// Setters
-// =============================================================================
+    // Setters
+    // =============================================================================
 
     /**
      * Set the source object type.
@@ -94,51 +94,4 @@ interface JoinInterface
      * @return JoinInterface Chainable
      */
     public function setActive($active);
-
-
-
-// Getters
-// =============================================================================
-
-    /**
-     * Retrieve the source object type.
-     *
-     * @return string
-     */
-    public function objectType();
-
-    /**
-     * Retrieve the source object ID.
-     *
-     * @return mixed
-     */
-    public function objectId();
-
-    /**
-     * Retrieve the related attachment ID.
-     *
-     * @return mixed
-     */
-    public function attachmentId();
-
-    /**
-     * Retrieve the relationship's group ID.
-     *
-     * @return mixed
-     */
-    public function group();
-
-    /**
-     * Retrieve the relationship's position.
-     *
-     * @return integer
-     */
-    public function position();
-
-    /**
-     * Determine if the relationship is enabled.
-     *
-     * @return boolean
-     */
-    public function active();
 }

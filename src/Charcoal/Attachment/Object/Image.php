@@ -16,10 +16,10 @@ class Image extends File
      */
     public function src()
     {
-        $src = $this->thumbnail();
+        $src = $this['thumbnail'];
 
         if (!$src) {
-            $src = $this->file();
+            $src = $this['file'];
         }
 
         return $this->createAbsoluteUrl($src);

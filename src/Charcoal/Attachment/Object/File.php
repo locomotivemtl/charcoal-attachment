@@ -17,7 +17,7 @@ class File extends Attachment
      */
     public function src()
     {
-        return $this->createAbsoluteUrl($this->file());
+        return $this->createAbsoluteUrl($this['file']);
     }
 
     /**
@@ -35,8 +35,8 @@ class File extends Attachment
 
 
 
-// Events
-// =============================================================================
+    // Events
+    // =============================================================================
 
     /**
      * Event called before _creating_ the object.

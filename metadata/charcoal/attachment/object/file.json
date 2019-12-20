@@ -1,5 +1,5 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/file",
         "preview": "{{> charcoal/attachment/object/file }}",
         "heading": "{{# _t }}File{{/ _t }}{{# title }}: {{ . }} — {{/ title }}{{^ title }} #{{ id }} — {{/ title }}{{ basename }}"
@@ -20,7 +20,7 @@
                     "file",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New File",
                         "ident": "create",
@@ -53,7 +53,8 @@
                 }
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
 
         "forms": {
             "quick": {
@@ -79,8 +80,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "default",
-                        "obj_type": "charcoal/attachment/object/file"
+                        "formIdent": "default",
+                        "objType": "charcoal/attachment/object/file"
                     }
                 },
                 "layout": {
@@ -94,8 +95,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default",
-                        "obj_type": "charcoal/attachment/object/file"
+                        "collectionIdent": "default",
+                        "objType": "charcoal/attachment/object/file"
                     }
                 },
                 "layout": {

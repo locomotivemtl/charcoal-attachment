@@ -1,5 +1,5 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/video",
         "heading": "{{# _t }}Video{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
     },
@@ -12,7 +12,7 @@
                     "file",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Video",
                         "ident": "create",
@@ -45,15 +45,16 @@
                 }
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
 
         "dashboards": {
             "edit": {
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "video",
-                        "obj_type": "charcoal/attachment/object/video"
+                        "formIdent": "video",
+                        "objType": "charcoal/attachment/object/video"
                     }
                 },
                 "layout": {
@@ -67,8 +68,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default",
-                        "obj_type": "charcoal/attachment/object/video"
+                        "collectionIdent": "default",
+                        "objType": "charcoal/attachment/object/video"
                     }
                 },
                 "layout": {

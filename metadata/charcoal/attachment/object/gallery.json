@@ -1,9 +1,10 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/gallery",
         "preview": "{{> charcoal/attachment/object/gallery }}",
         "heading": "{{# _t }}Gallery{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
     },
+
     "data": {
         "type": "charcoal/attachment/object/gallery",
         "preview": "{{> charcoal/attachment/object/gallery }}",
@@ -11,8 +12,8 @@
     },
 
     "attachments": {
-        "default_widget": "images",
-        "attachable_objects": {
+        "defaultWidget": "images",
+        "attachableObjects": {
             "charcoal/attachment/object/image": {
                 "label": "Image"
             }
@@ -26,7 +27,7 @@
                     "title",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Gallery",
                         "ident": "create",
@@ -58,7 +59,8 @@
                 }
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
 
         "forms": {
             "quick": {
@@ -81,22 +83,23 @@
                 }
             }
         },
-        "default_form": "quick",
+
+        "defaultForm": "quick",
 
         "dashboards": {
             "edit": {
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "quick",
-                        "obj_type": "charcoal/attachment/object/gallery"
+                        "formIdent": "quick",
+                        "objType": "charcoal/attachment/object/gallery"
                     },
                     "images": {
                         "title": "Images",
                         "type": "charcoal/admin/widget/attachment",
-                        "form_ident": "default",
+                        "formIdent": "default",
                         "group": "gallery",
-                        "attachable_objects": {
+                        "attachableObjects": {
                             "charcoal/attachment/object/image": {
                                 "label": "Image"
                             }
@@ -115,8 +118,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default",
-                        "obj_type": "charcoal/attachment/object/gallery"
+                        "collectionIdent": "default",
+                        "objType": "charcoal/attachment/object/gallery"
                     }
                 },
                 "layout": {

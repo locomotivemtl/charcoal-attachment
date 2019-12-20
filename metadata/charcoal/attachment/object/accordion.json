@@ -1,9 +1,10 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/accordion",
         "preview": "{{> charcoal/attachment/object/accordion }}",
         "heading": "{{# _t }}Accordion{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
     },
+
     "data": {
         "type": "charcoal/attachment/object/accordion",
         "preview": "{{> charcoal/attachment/object/accordion }}",
@@ -11,7 +12,7 @@
     },
 
     "attachments": {
-        "attachable_objects": {
+        "attachableObjects": {
             "charcoal/attachment/object/text": {
                 "label": "Text Zone"
             },
@@ -33,7 +34,7 @@
                 "groups": {
                     "body": {
                         "title": "Content Accordion",
-                        "show_header": false,
+                        "showHeader": false,
                         "properties": [
                             "title"
                         ],
@@ -69,13 +70,13 @@
             }
         },
 
-        "form_groups": {
+        "formGroups": {
             "contents": {
                 "title": "Panels",
                 "type": "charcoal/admin/widget/form-group/attachment",
                 "template": "charcoal/admin/widget/form-group/attachment",
                 "group": "accordion",
-                "show_previews": false
+                "showPreviews": false
             }
         },
 
@@ -85,13 +86,14 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "default",
-                        "obj_type": "charcoal/attachment/object/accordion"
+                        "formIdent": "default",
+                        "objType": "charcoal/attachment/object/accordion"
                     }
                 }
             }
         },
-        "default_create_dashboard": "admin.edit",
-        "default_edit_dashboard": "admin.edit"
+
+        "defaultCreateDashboard": "admin.edit",
+        "defaultEditDashboard": "admin.edit"
     }
 }

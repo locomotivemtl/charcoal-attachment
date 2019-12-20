@@ -1,5 +1,5 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/text",
         "preview": "{{> charcoal/attachment/object/text }}",
         "heading": "{{# _t }}Text Zone{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
@@ -14,7 +14,7 @@
     "admin": {
         "forms": {
             "text": {
-                "l10n_mode": "loop_inputs",
+                "l10nMode": "loopInputs",
                 "groups": {
                     "info": {
                         "title": "Information",
@@ -65,7 +65,8 @@
                 }
             }
         },
-        "default_form": "text",
+
+        "defaultForm": "text",
 
         "lists": {
             "text": {
@@ -74,7 +75,7 @@
                     "subtitle",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Text Zone",
                         "ident": "create",
@@ -107,15 +108,16 @@
                 }
             }
         },
-        "default_list": "text",
+
+        "defaultList": "text",
 
         "dashboards": {
             "edit": {
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "text",
-                        "obj_type": "charcoal/attachment/object/text"
+                        "formIdent": "text",
+                        "objType": "charcoal/attachment/object/text"
                     }
                 },
                 "layout": {
@@ -129,8 +131,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "text",
-                        "obj_type": "charcoal/attachment/object/text"
+                        "collectionIdent": "text",
+                        "objType": "charcoal/attachment/object/text"
                     }
                 },
                 "layout": {

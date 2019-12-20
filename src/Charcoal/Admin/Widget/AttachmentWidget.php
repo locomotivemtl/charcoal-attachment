@@ -210,7 +210,7 @@ class AttachmentWidget extends AdminWidget implements
         ]);
 
         foreach ($attachments as $attachment) {
-            $this->setDynamicTemplate('widget_template', (string)$attachment->rawPreview());
+            $this->setDynamicTemplate('widgetTemplate', (string)$attachment->rawPreview());
 
             if (isset($attachableObjects[$attachment->objType()])) {
                 $attachment->attachmentType = $attachableObjects[$attachment->objType()];

@@ -388,7 +388,7 @@ trait AttachmentAwareTrait
         $formIdent = '';
         foreach ($widgets as $ident => $val) {
             if ($val['type'] == 'charcoal/admin/widget/object-form') {
-                $formIdent = $val['form_ident'];
+                $formIdent = $val['formIdent'];
             }
         }
 

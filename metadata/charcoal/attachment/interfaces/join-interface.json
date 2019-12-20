@@ -8,15 +8,15 @@
             "type": "boolean",
             "label": "Active"
         },
-        "object_type": {
+        "objectType": {
             "type": "string",
             "label": "Object Type"
         },
-        "object_id": {
+        "objectId": {
             "type": "string",
             "label": "Object ID"
         },
-        "attachment_id": {
+        "attachmentId": {
             "type": "string",
             "label": "Attachment ID"
         },

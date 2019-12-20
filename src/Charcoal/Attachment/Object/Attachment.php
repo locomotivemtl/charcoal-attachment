@@ -748,78 +748,8 @@ class Attachment extends Content implements AttachableInterface
         if (is_bool($this->showTitle)) {
             return $this->showTitle;
         } else {
-            return !!$this->title();
+            return !!$this['title'];
         }
-    }
-
-    /**
-     * Retrieve the attachment's title.
-     *
-     * @return Translation|string|null
-     */
-    public function title()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Retrieve the attachment's sub-title.
-     *
-     * @return Translation|string|null
-     */
-    public function subtitle()
-    {
-        return $this->subtitle;
-    }
-
-    /**
-     * Retrieve attachment's description.
-     *
-     * @return Translation|string|null
-     */
-    public function description()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Retrieve the attachment's keywords.
-     *
-     * @return string[]
-     */
-    public function keywords()
-    {
-        return $this->keywords;
-    }
-
-    /**
-     * Retrieve the path to the thumbnail associated with the object.
-     *
-     * @return string|null
-     */
-    public function thumbnail()
-    {
-        return $this->thumbnail;
-    }
-
-    /**
-     * Retrieve the path to the attached file.
-     *
-     * @return Translation|string|null
-     */
-    public function file()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Retrieve the attached link.
-     *
-     * @return Translation|string|null
-     */
-    public function link()
-    {
-        return $this->link;
     }
 
     /**
@@ -828,68 +758,11 @@ class Attachment extends Content implements AttachableInterface
      */
     public function basename()
     {
-        if (!$this->file()) {
+        if (!$this['file']) {
             return '';
         }
 
-        return basename(strval($this->file()));
-    }
-
-    /**
-     * Retrieve the file label.
-     *
-     * @return string|null
-     */
-    public function fileLabel()
-    {
-        return $this->fileLabel;
-    }
-
-    /**
-     * Retrieve the link label.
-     *
-     * @return string|null
-     */
-    public function linkLabel()
-    {
-        return $this->linkLabel;
-    }
-
-    /**
-     * Retrieve the attached file's size.
-     *
-     * @return integer Returns the size of the file in bytes, or FALSE in case of an error.
-     */
-    public function fileSize()
-    {
-        return $this->fileSize;
-    }
-
-    /**
-     * File type / extension
-     * @return string File extension.
-     */
-    public function fileType()
-    {
-        return $this->fileType;
-    }
-
-    /**
-     * Retrieve the embed content.
-     *
-     * @return string
-     */
-    public function embed()
-    {
-        return $this->embed;
-    }
-
-    /**
-     * @return string|\string[]
-     */
-    public function categories()
-    {
-        return $this->categories;
+        return basename(strval($this['file']));
     }
 
     /**

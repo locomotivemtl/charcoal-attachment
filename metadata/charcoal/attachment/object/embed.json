@@ -1,9 +1,10 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/embed",
         "preview": "{{> charcoal/attachment/object/embed }}",
         "heading": "{{# _t }}Embedded Media{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
     },
+
     "data": {
         "type": "charcoal/attachment/object/embed",
         "preview": "{{> charcoal/attachment/object/embed }}",
@@ -13,8 +14,8 @@
     "properties": {
         "file": {
             "type": "image",
-            "upload_path": "uploads/attachments/images/",
-            "view_options": {
+            "uploadPath": "uploads/attachments/images/",
+            "viewOptions": {
                 "charcoal/admin/property/display/image": {
                     "height": 50
                 }
@@ -28,7 +29,7 @@
     "admin": {
         "forms": {
             "embed": {
-                "l10n_mode": "loop_inputs",
+                "l10nMode": "loopInputs",
                 "groups": {
                     "info": {
                         "title": "Information",
@@ -80,7 +81,8 @@
                 }
             }
         },
-        "default_form": "embed",
+
+        "defaultForm": "embed",
 
         "lists": {
             "default": {
@@ -89,7 +91,7 @@
                     "file",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Embedded Media",
                         "ident": "create",
@@ -122,15 +124,16 @@
                 }
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
 
         "dashboards": {
             "edit": {
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "embed",
-                        "obj_type": "charcoal/attachment/object/embed"
+                        "formIdent": "embed",
+                        "objType": "charcoal/attachment/object/embed"
                     }
                 },
                 "layout": {
@@ -144,8 +147,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default",
-                        "obj_type": "charcoal/attachment/object/embed"
+                        "collectionIdent": "default",
+                        "objType": "charcoal/attachment/object/embed"
                     }
                 },
                 "layout": {

@@ -1,11 +1,12 @@
 {
-    "default_data": {
-        "show_title": true,
+    "defaultData": {
+        "showTitle": true,
         "preview": "{{ title }}",
         "heading": "{{# _t }}Related Content{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
     },
+
     "data": {
-        "show_title": true,
+        "showTitle": true,
         "preview": "{{ title }}",
         "heading": "{{# _t }}Related Content{{/ _t }}{{# title }}: {{ . }}{{/ title }}{{^ title }} #{{ id }}{{/ title }}"
     },
@@ -21,13 +22,13 @@
             "l10n": true,
             "label": "Title"
         },
-        "show_title": {
+        "showTitle": {
             "type": "boolean",
             "label": "Show title on the website"
         },
         "categories": {
             "type": "object",
-            "obj_type": "charcoal/attachment/object/category/generic",
+            "objType": "charcoal/attachment/object/category/generic",
             "multiple": true,
             "label": "Categories"
         },
@@ -57,7 +58,7 @@
             "label": "URL",
             "notes": "e.g.: <samp>https://locomotive.ca</samp>"
         },
-        "link_label": {
+        "linkLabel": {
             "type": "string",
             "l10n": true,
             "label": "URL Label"
@@ -66,19 +67,19 @@
             "type": "file",
             "l10n": true,
             "label": "File",
-            "upload_path": "uploads/attachments/",
-            "public_access": true
+            "uploadPath": "uploads/attachments/",
+            "publicAccess": true
         },
-        "file_label": {
+        "fileLabel": {
             "type": "string",
             "l10n": true,
             "label": "File Label"
         },
-        "file_size": {
+        "fileSize": {
             "type": "string",
             "label": "File Size"
         },
-        "file_type": {
+        "fileType": {
             "type": "string",
             "label": "File Type"
         },
@@ -86,15 +87,15 @@
             "type": "image",
             "l10n": true,
             "label": "File's Thumbnail",
-            "upload_path": "uploads/attachments/thumbs/",
-            "public_access": true
+            "uploadPath": "uploads/attachments/thumbs/",
+            "publicAccess": true
         },
         "embed": {
             "type": "text",
             "l10n": true,
             "label": "Embed Video",
             "notes": "As provided by YouTube or Vimeo",
-            "allow_html" : true
+            "allowHtml" : true
         }
     },
 
@@ -104,7 +105,8 @@
             "table": "charcoal_attachments"
         }
     },
-    "default_source": "default",
+
+    "defaultSource": "default",
 
     "admin": {
         "lists": {
@@ -123,11 +125,12 @@
                 }
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
 
         "forms": {
             "default": {
-                "l10n_mode": "loop_inputs",
+                "l10nMode": "loopInputs",
                 "groups": {
                     "info": {
                         "priority": 100,
@@ -183,7 +186,8 @@
                 }
             }
         },
-        "default_form": "default",
+
+        "defaultForm": "default",
 
         "dashboards": {
             "edit": {
@@ -191,8 +195,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "default",
-                        "group_display_mode": "tab"
+                        "formIdent": "default",
+                        "groupDisplayMode": "tab"
                     }
                 },
                 "layout": {
@@ -206,7 +210,7 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default"
+                        "collectionIdent": "default"
                     }
                 },
                 "layout": {
@@ -216,8 +220,9 @@
                 }
             }
         },
-        "default_create_dashboard": "edit",
-        "default_edit_dashboard": "edit",
-        "default_collection_dashboard": "table"
+
+        "defaultCreateDashboard": "edit",
+        "defaultEditDashboard": "edit",
+        "defaultCollectionDashboard": "table"
     }
 }

@@ -81,7 +81,7 @@ trait AttachmentContainerTrait
 
             if (isset($config['group'])) {
                 $group = $config['group'];
-                // If the 'default_group' is not set, search for it.
+            // If the 'default_group' is not set, search for it.
             } elseif (isset($config['default_group'])) {
                 $group = $config['default_group'];
             // If the 'default_group' is not set, search for it.
@@ -154,14 +154,14 @@ trait AttachmentContainerTrait
                     }
 
                     // Useful for replacing a pre-defined attachment type
-                    if (isset($attMeta['attachment_type'])) {
-                        $attType = $attMeta['attachment_type'];
+                    if (isset($attMeta['attachmentType'])) {
+                        $attType = $attMeta['attachmentType'];
                     } else {
-                        $attMeta['attachment_type'] = $attType;
+                        $attMeta['attachmentType'] = $attType;
                     }
 
                     // Alias
-                    $attMeta['attachmentType'] = $attMeta['attachment_type'];
+                    $attMeta['attachmentType'] = $attMeta['attachmentType'];
 
                     if (isset($attMeta['label'])) {
                         $attMeta['label'] = $this->translator()->translation($attMeta['label']);
@@ -184,8 +184,8 @@ trait AttachmentContainerTrait
                     $attMeta['hasFaIcon'] = !!$faIcon;
 
                     // Custom forms
-                    if (isset($attMeta['form_ident'])) {
-                        $attMeta['formIdent'] = $attMeta['form_ident'];
+                    if (isset($attMeta['formIdent'])) {
+                        $attMeta['formIdent'] = $attMeta['formIdent'];
                     } else {
                         $attMeta['formIdent'] = null;
                     }

@@ -116,14 +116,14 @@ class Join extends AbstractModel implements
      *
      * @var JoinInterface[]|null
      */
-    private $hierarchy;
+    protected $hierarchy;
 
     /**
      * Store the factory instance.
      *
      * @var FactoryInterface
      */
-    private $modelFactory;
+    protected $modelFactory;
 
     /**
      * Set the model's dependencies.
@@ -140,8 +140,8 @@ class Join extends AbstractModel implements
 
 
 
-// Utilities
-// =============================================================================
+    // Utilities
+    // =============================================================================
 
     /**
      * Retrieve the source object of the relationship.
@@ -155,7 +155,7 @@ class Join extends AbstractModel implements
             $this->isSourceObjectResolved = true;
 
             try {
-                $model = $this->modelFactory()->create($this->objectType())->load($this->objectId());
+                $model = $this->modelFactory()->create($this['objectType'])->load($this['objectId']);
                 if ($model->id()) {
                     $this->sourceObject = $model;
                 }
@@ -182,7 +182,7 @@ class Join extends AbstractModel implements
             $this->isRelatedObjectResolved = true;
 
             try {
-                $model = $this->modelFactory()->create(Attachment::class)->load($this->attachmentId());
+                $model = $this->modelFactory()->create(Attachment::class)->load($this['attachmentId']);
                 if ($model->id()) {
                     $this->relatedObject = $model;
 
@@ -298,8 +298,8 @@ class Join extends AbstractModel implements
 
 
 
-// Setters
-// =============================================================================
+    // Setters
+    // =============================================================================
 
     /**
      * Set the source object type.
@@ -435,68 +435,8 @@ class Join extends AbstractModel implements
 
 
 
-// Getters
-// =============================================================================
-
-    /**
-     * Retrieve the source object type.
-     *
-     * @return string
-     */
-    public function objectType()
-    {
-        return $this->objectType;
-    }
-
-    /**
-     * Retrieve the source object ID.
-     *
-     * @return mixed
-     */
-    public function objectId()
-    {
-        return $this->objectId;
-    }
-
-    /**
-     * Retrieve the related attachment ID.
-     *
-     * @return mixed
-     */
-    public function attachmentId()
-    {
-        return $this->attachmentId;
-    }
-
-    /**
-     * Retrieve the relationship's group ID.
-     *
-     * @return mixed
-     */
-    public function group()
-    {
-        return $this->group;
-    }
-
-    /**
-     * Retrieve the relationship's position.
-     *
-     * @return integer
-     */
-    public function position()
-    {
-        return $this->position;
-    }
-
-    /**
-     * Determine if the relationship is enabled.
-     *
-     * @return boolean
-     */
-    public function active()
-    {
-        return $this->active;
-    }
+    // Getters
+    // =============================================================================
 
     /**
      * Retrieve the model factory.

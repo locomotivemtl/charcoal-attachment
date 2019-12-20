@@ -4,7 +4,8 @@
             "table": "charcoal_attachment_categories"
         }
     },
-    "default_source": "default",
+
+    "defaultSource": "default",
 
     "admin": {
         "lists": {
@@ -13,7 +14,7 @@
                     "name",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Category",
                         "ident": "create",
@@ -22,7 +23,9 @@
                 ]
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
+
         "forms": {
             "default": {
                 "groups": {
@@ -51,8 +54,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "default",
-                        "obj_type": "charcoal/attachment/object/category/generic"
+                        "formIdent": "default",
+                        "objType": "charcoal/attachment/object/category/generic"
                     }
                 }
             },
@@ -61,8 +64,8 @@
                 "widgets": {
                     "table": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default",
-                        "obj_type": "charcoal/attachment/object/category/generic"
+                        "collectionIdent": "default",
+                        "objType": "charcoal/attachment/object/category/generic"
                     }
                 },
                 "layout": {
@@ -72,8 +75,9 @@
                 }
             }
         },
-        "default_create_dashboard": "admin.edit",
-        "default_edit_dashboard": "admin.edit",
-        "default_collection_dashboard": "admin.table"
+
+        "defaultCreateDashboard": "admin.edit",
+        "defaultEditDashboard": "admin.edit",
+        "defaultCollectionDashboard": "admin.table"
     }
 }

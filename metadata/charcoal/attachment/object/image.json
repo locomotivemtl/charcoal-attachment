@@ -1,5 +1,5 @@
 {
-    "default_data": {
+    "defaultData": {
         "type": "charcoal/attachment/object/image",
         "preview": "{{> charcoal/attachment/object/image }}",
         "heading": "{{# _t }}Picture{{/ _t }}{{# title }}: {{ . }} — {{/ title }}{{^ title }} #{{ id }} — {{/ title }}{{ basename }}"
@@ -11,8 +11,8 @@
         },
         "file": {
             "type": "image",
-            "upload_path": "uploads/attachments/images/",
-            "view_options": {
+            "uploadPath": "uploads/attachments/images/",
+            "viewOptions": {
                 "charcoal/admin/property/display/image": {
                     "height": 50
                 }
@@ -28,7 +28,7 @@
                     "file",
                     "active"
                 ],
-                "list_actions": [
+                "listActions": [
                     {
                         "label": "New Image",
                         "ident": "create",
@@ -84,15 +84,16 @@
                 }
             }
         },
-        "default_list": "default",
+
+        "defaultList": "default",
 
         "dashboards": {
             "edit": {
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/object-form",
-                        "form_ident": "default",
-                        "obj_type": "charcoal/attachment/object/image"
+                        "formIdent": "default",
+                        "objType": "charcoal/attachment/object/image"
                     }
                 },
                 "layout": {
@@ -106,8 +107,8 @@
                 "widgets": {
                     "form": {
                         "type": "charcoal/admin/widget/table",
-                        "collection_ident": "default",
-                        "obj_type": "charcoal/attachment/object/image"
+                        "collectionIdent": "default",
+                        "objType": "charcoal/attachment/object/image"
                     }
                 },
                 "layout": {
