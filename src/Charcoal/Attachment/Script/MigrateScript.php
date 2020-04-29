@@ -102,7 +102,7 @@ class MigrateScript extends AlterPrimaryKeyScript
         $db = $attachSource->db();
         if (!$db) {
             $cli->error(
-                'Could not instanciate a database connection.'
+                'Could not instantiate a database connection.'
             );
             return $this;
         }

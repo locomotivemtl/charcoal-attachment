@@ -381,7 +381,7 @@ trait AttachmentAwareTrait
 
     /**
      * Available attachment obj_type related to the current object.
-     * This goes throught the entire forms / form groups, starting from the
+     * This goes through the entire forms / form groups, starting from the
      * dashboard widgets.
      * Returns an array of object classes by group
      * [

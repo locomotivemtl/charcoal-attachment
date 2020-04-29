@@ -5,7 +5,7 @@ namespace Charcoal\Attachment\Object;
 /**
  * Embedded Content Node
  *
- * A Embed node is basicly just either a URL or an embed as provided
+ * A Embed node is basically just either a URL or an embed as provided
  * by the provider (obviously) such as YouTube, Vimeo, etc.
  *
  */

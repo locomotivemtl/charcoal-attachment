@@ -352,7 +352,7 @@ class AttachmentWidget extends AdminWidget implements
         $this->isMergingData = true;
         /**
          * @todo Kinda hacky, but works with the concept of form.
-         *     Should work embeded in a form group or in a dashboard.
+         *     Should work embedded in a form group or in a dashboard.
          */
         $data = array_merge($_GET, $data);
 

@@ -151,7 +151,7 @@
 
     <!-- Do not allow multiple PHP statements (;) on a same line -->
     <rule ref="Generic.Formatting.DisallowMultipleStatements" />
-    <!-- Make sure all adjacent assigments are properly aligned, for the extra-pedantic in you -->
+    <!-- Make sure all adjacent assignments are properly aligned, for the extra-pedantic in you -->
     <!--<rule ref="Generic.Formatting.MultipleStatementAlignment" />-->
 
     <!-- Ensure there are no spaces after a typecast Ex: (array)$x -->

@@ -55,7 +55,7 @@ All attachments are assumed to have a `title`, `subtitle`, `description` and `ke
 
 > Read the [`charcoal-object`](https://github.com/locomotivemtl/charcoal-object) documentation for the other default properties provided by the `Content` object (and `RevisionableInterface`).
 
-> Read the [`charcoal-core`](https://github.com/locomotivemtl/charcoal-core) documention for the other default properties provided by `AbstractModel` (and `DescribableInterface` and `StorableInterface`). 
+> Read the [`charcoal-core`](https://github.com/locomotivemtl/charcoal-core) documentation for the other default properties provided by `AbstractModel` (and `DescribableInterface` and `StorableInterface`). 
 
 
 ### Type of Attachment objects
@@ -182,7 +182,7 @@ public function preDelete()
 
 ## Documentation
 
-Attachment widget can be use more than once in a form. In order for it to work properly, you need to define a group ident `group` different for each instanciated widgets.
+Attachment widget can be use more than once in a form. In order for it to work properly, you need to define a group ident `group` different for each instantiated widgets.
 
 ```json
 "attachment": {
