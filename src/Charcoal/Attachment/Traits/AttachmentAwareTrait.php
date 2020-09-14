@@ -50,13 +50,6 @@ trait AttachmentAwareTrait
     protected $attachments = [];
 
     /**
-     * Store the widget instance currently displaying attachments.
-     *
-     * @var AttachmentWidget
-     */
-    protected $attachmentWidget;
-
-    /**
      * Retrieve the objects associated to the current object.
      *
      * @param  array|string|null $group  Filter the attachments by a group identifier.
@@ -132,7 +125,6 @@ trait AttachmentAwareTrait
             return [];
         }
 
-        $widget = $this->attachmentWidget();
 
         $query = sprintf('
             SELECT
@@ -149,7 +141,7 @@ trait AttachmentAwareTrait
                 1 = 1', $attTable, $joinTable);
 
         /** Disable `active` check in admin, or according to $isActive value */
-        if (!$widget instanceof AttachmentWidget && $isActive === true) {
+        if ($isActive === true) {
             $query .= '
             AND
                 attachment.active = 1';
@@ -180,67 +172,23 @@ trait AttachmentAwareTrait
         $loader->setModel($attProto);
         $loader->setDynamicTypeField('type');
 
-        if ($widget instanceof AttachmentWidget) {
-            $callable = function (&$att) use ($widget, $before) {
-                if ($this instanceof AttachableInterface) {
-                    $att->setContainerObj($this);
-                }
+        $callable = function (&$att) use ($before) {
+            if ($this instanceof AttachableInterface) {
+                $att->setContainerObj($this);
+            }
 
-                if ($att instanceof AttachmentAwareInterface) {
-                    $att['attachment_widget'] = $widget;
-                }
+            $att->isPresentable(true);
 
-                $kind = $att->type();
-                $attachables = $widget->attachableObjects();
+            if ($att->presenter() !== null) {
+                $att = $this->modelFactory()
+                            ->create($att->presenter())
+                            ->setData($att->flatData());
+            }
 
-                if (isset($attachables[$kind]['data'])) {
-                    $att->setData($attachables[$kind]['data']);
-                }
-
-                if (!$att->rawHeading()) {
-                    $att->setHeading($widget->attachmentHeading());
-                }
-
-                if (!$att->rawPreview()) {
-                    $att->setPreview($widget->attachmentPreview());
-                }
-
-                $att->isPresentable(true);
-
-                /** Not Sure if we want to present the attachment for backend preview.
-                 * Might want to have a second presenter key on attachment model
-                 * so we can supply either the same presenter,
-                 * another one or none at all.
-                 */
-                // if ($att->presenter() !== null) {
-                //         $att = $this->modelFactory()
-                //                     ->create($att->presenterClass())
-                //                     ->setData($att->flatData());
-                // }
-
-                if ($before !== null) {
-                    call_user_func_array($before, [ &$att ]);
-                }
-            };
-        } else {
-            $callable = function (&$att) use ($before) {
-                if ($this instanceof AttachableInterface) {
-                    $att->setContainerObj($this);
-                }
-
-                $att->isPresentable(true);
-
-                if ($att->presenter() !== null) {
-                    $att = $this->modelFactory()
-                                ->create($att->presenter())
-                                ->setData($att->flatData());
-                }
-
-                if ($before !== null) {
-                    call_user_func_array($before, [ &$att ]);
-                }
-            };
-        }
+            if ($before !== null) {
+                call_user_func_array($before, [ &$att ]);
+            }
+        };
 
         $collection = $loader->loadFromQuery($query, $after, $callable->bindTo($this));
 
@@ -356,28 +304,6 @@ trait AttachmentAwareTrait
         return true;
     }
 
-    /**
-     * Retrieve the attachment widget.
-     *
-     * @return AttachmentWidget
-     */
-    protected function attachmentWidget()
-    {
-        return $this->attachmentWidget;
-    }
-
-    /**
-     * Set the attachment widget.
-     *
-     * @param  AttachmentWidget $widget The widget displaying attachments.
-     * @return string
-     */
-    protected function setAttachmentWidget(AttachmentWidget $widget)
-    {
-        $this->attachmentWidget = $widget;
-
-        return $this;
-    }
 
     /**
      * Available attachment obj_type related to the current object.
